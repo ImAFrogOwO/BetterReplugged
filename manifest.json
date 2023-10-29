@@ -1,11 +1,11 @@
 {
-  "id": "dev.replugged.pp",
-  "name": "pp",
-  "description": "pp",
+  "id": "dev.replugged.BDCompatibility",
+  "name": "BDCompatibility",
+  "description": "Hey! Yeah you! This plugin allows YOU, yes YOU!! to use BetterDiscord plugins on Replugged. Crazy right!?!!",
   "author": {
-    "name": "replugged",
-    "discordID": "1000992611840049192",
-    "github": "replugged-org"
+    "name": "imafrogowo",
+    "discordID": "",
+    "github": "ImAFrogOwO"
   },
   "version": "1.0.0",
   "updater": {

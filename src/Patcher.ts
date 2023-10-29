@@ -1,7 +1,6 @@
 import { Injector, Logger, webpack } from "replugged";
 
 const OwOPatcher = new Injector();
-const LOwOgger = Logger.plugin("BDCompat");
 const Uninjector = {};
 const Patcher =
 {
@@ -23,7 +22,7 @@ const Patcher =
     Uninjector[_].push(uninj);
     return uninj;
   },
-  unpatchAll: () => {
+  unpatchAll: (_) => {
     Uninjector[_].forEach(r => r?.());
     Uninjector[_] = [];
   }

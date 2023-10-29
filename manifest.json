@@ -1,7 +1,7 @@
 {
-  "id": "dev.replugged.PluginTemplate",
-  "name": "Plugin Template",
-  "description": "A plugin template",
+  "id": "dev.replugged.pp",
+  "name": "pp",
+  "description": "pp",
   "author": {
     "name": "replugged",
     "discordID": "1000992611840049192",

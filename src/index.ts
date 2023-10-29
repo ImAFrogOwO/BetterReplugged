@@ -1,26 +1,30 @@
-import { Injector, Logger, webpack } from "replugged";
+/* eslint-disable @typescript-eslint/no-invalid-this */
 
-const inject = new Injector();
-const logger = Logger.plugin("PluginTemplate");
+/* eslint-disable @typescript-eslint/require-await */
+
+import { Injector, Logger, webpack, settings } from "replugged";
+import { React, ReactDOM } from "replugged/common";
+import WebpackModules from './Webpack';
+import Data from './Data';
+import Patcher from './Patcher';
+
+const BDCompat =
+{
+  Plugins: {},
+  Webpack: WebpackModules.Webpack,
+  Patcher,
+  ContextMenu: {},
+  Data,
+  Net: {},
+  alert: () => { }, // This should be a function.
+  React: WebpackModules.Webpack.getModule(x => x?.createElement) ?? React, // "budddi, fac you" - tharki
+  ReactDOM: WebpackModules.Webpack.findModuleByProps("render", "findDOMNode") ?? ReactDOM
+}
 
 export async function start(): Promise<void> {
-  const typingMod = await webpack.waitForModule<{
-    startTyping: (channelId: string) => void;
-  }>(webpack.filters.byProps("startTyping"));
-  const getChannelMod = await webpack.waitForModule<{
-    getChannel: (id: string) => {
-      name: string;
-    };
-  }>(webpack.filters.byProps("getChannel"));
-
-  if (typingMod && getChannelMod) {
-    inject.instead(typingMod, "startTyping", ([channel]) => {
-      const channelObj = getChannelMod.getChannel(channel);
-      logger.log(`Typing prevented! Channel: #${channelObj?.name ?? "unknown"} (${channel}).`);
-    });
-  }
+  window.BdApi = BDCompat
 }
 
 export function stop(): void {
-  inject.uninjectAll();
+  delete window.BdApi;
 }

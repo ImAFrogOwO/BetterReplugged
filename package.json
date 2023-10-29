@@ -1,7 +1,7 @@
 {
-  "name": "plugin-template",
+  "name": "BetterDiscordLayer",
   "version": "1.0.0",
-  "description": "A plugin template",
+  "description": "A BetterDiscord Compatibility layer for those people who just like BetterDiscord, or just want BetterDiscord plugins on replugged. (Or if you fangirl over DevilBro plugins)",
   "engines": {
     "node": ">=18.0.0",
     "pnpm": ">=8.0.0"
@@ -31,7 +31,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-react": "^7.33.2",
     "prettier": "^3.0.3",
-    "replugged": "^4.6.2",
+    "replugged": "^4.7.4",
     "typescript": "^5.2.2"
   }
 }

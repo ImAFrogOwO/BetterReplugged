@@ -1,7 +1,11 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-undefined */
 /* eslint-disable @typescript-eslint/no-unnecessary-condition */
+
 import { Injector, Logger, webpack } from "replugged";
-import Filters from './Filter';
+import Filter from './Filter';
+
 const Webpack =
 {
   require: window.webpackChunkdiscord_app.push([
@@ -12,16 +16,28 @@ const Webpack =
   getStore(string) {
     return webpack.getByStoreName(string)
   },
-  getModule(filters, options = {}) {
-    return webpack.getModule(filters, options)
+  getModule(propertyExpression: (module: any) => any, options: any = {}) {
+    const expression = (x: any) => {
+      if (options.searchExports) {
+        console.log("{searchExports:true}")
+        return (
+          propertyExpression(x?.exports?.ZP) ||
+          propertyExpression(x?.exports?.Z) ||
+          propertyExpression(x?.exports?.default)
+        );
+      } else {
+        return propertyExpression(x?.exports?.default);
+      }
+    };
+    return webpack.getModule(expression, options);
   },
-  getModules(filters) {
-    return webpack.getModule(filters, { all: true })
+  getModules(propertyExpression: (module: any) => any,) {
+    return webpack.getModule((x) => propertyExpression(x?.exports?.default), { all: true })
   },
   findModuleByProps(...props) {
     return webpack.getByProps(...props)
-  }
-
+  },
+  Filters: Filter.Filters
 }
 
-export default { Webpack, Filters }
+export default Webpack;

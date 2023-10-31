@@ -3,29 +3,32 @@
 /* eslint-disable @typescript-eslint/require-await */
 
 import { Injector, Logger, webpack, settings } from "replugged";
+import { LOwOgger } from './Globals';
 import { React, ReactDOM } from "replugged/common";
 import WebpackModules from './Webpack';
 import Data from './Data';
 import Patcher from './Patcher';
-import Filters from './Filter';
-const LOwOgger = Logger.plugin('BetterDiscordCompat')
+import ContextMenu from "./ContextMenu";
+import UI from './UI';
+
 const BDCompat =
 {
   Plugins: {},
-  Webpack: WebpackModules.Webpack, // Filter will exist. At some point
+  Webpack: WebpackModules, // Filter will exist. At some point // BdApi.Webpack.Filters
   Patcher,
-  ContextMenu: {},
+  ContextMenu,
   Data,
+  UI,
   Net: {},
   alert: () => { }, // This should be a function.
-  findModuleByProps: WebpackModules.Webpack.findModuleByProps,
-  React: WebpackModules.Webpack.getModule(x => x?.exports?.default?.createElement) ?? React, // "budddi, fac you" - tharki
-  ReactDOM: WebpackModules.Webpack.findModuleByProps("render", "findDOMNode") ?? ReactDOM
+  findModuleByProps: WebpackModules.findModuleByProps,
+  React: WebpackModules.getModule(x => x?.createElement) ?? React, // "budddi, fac you" - tharki
+  ReactDOM: WebpackModules.findModuleByProps("render", "findDOMNode") ?? ReactDOM
 }
 
 export async function start(): Promise<void> {
   window.BdApi = BDCompat
-  const User = WebpackModules?.Webpack?.getModule(x => x?.exports?.default?.getCurrentUser)?.getCurrentUser()
+  const User = WebpackModules.getModule(x => x?.getCurrentUser)?.getCurrentUser()
   LOwOgger.log(`Hey!! I have started. Welcome to the party!! As an approach to copy discord, ${User.username} I hope you brought pizza!`);
 }
 

@@ -4,7 +4,6 @@
 /* eslint-disable no-duplicate-imports */
 /* eslint-disable new-cap */
 
-import { Injector, Logger, webpack, settings } from "replugged";
 import { LOwOgger } from './Globals';
 import { React, ReactDOM } from "replugged/common";
 import WebpackModules from './Webpack/Webpack';

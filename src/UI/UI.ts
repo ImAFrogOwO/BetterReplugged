@@ -1,7 +1,7 @@
 /* eslint-disable no-undefined */
 /* eslint-disable @typescript-eslint/no-unnecessary-condition */
 
-import WebpackModules from './Webpack';
+import WebpackModules from '../Webpack/Webpack';
 
 const UIConst =
 {

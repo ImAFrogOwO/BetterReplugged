@@ -5,11 +5,11 @@
 import { Injector, Logger, webpack, settings } from "replugged";
 import { LOwOgger } from './Globals';
 import { React, ReactDOM } from "replugged/common";
-import WebpackModules from './Webpack';
-import Data from './Data';
-import Patcher from './Patcher';
-import ContextMenu from "./ContextMenu";
-import UI from './UI';
+import WebpackModules from './Webpack/Webpack';
+import Data from './Data/Data';
+import Patcher from './Patcher/Patcher';
+import ContextMenu from "./ContextMenu/ContextMenu";
+import UI from './UI/UI';
 
 const BDCompat =
 {

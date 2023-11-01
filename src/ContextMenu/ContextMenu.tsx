@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable func-style */
-import { InjectOwOr } from './Globals';
+import { InjectOwOr } from '../Globals';
 import { React } from 'replugged/common';
 import { ContextMenu } from "replugged/components"
 

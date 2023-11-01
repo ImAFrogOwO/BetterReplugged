@@ -1,5 +1,5 @@
 import { Logger, webpack } from "replugged";
-import { InjectOwOr } from "./Globals";
+import { InjectOwOr } from "../Globals";
 
 const Uninjector = {};
 const Patcher =

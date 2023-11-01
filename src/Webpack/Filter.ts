@@ -17,7 +17,7 @@ const Filters =
   },
   byStrings: (...filter) => {
     return (module) => {
-      return filter.every(s => filters.bySource(s)(module)); // THIS DOESNT WORK YET. NONE DO
+      return filter?.every(s => filters?.bySource(s)(module)); // THIS DOESNT WORK YET. NONE DO
     }
   }
 }

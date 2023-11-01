@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-condition */
 
 import WebpackModules from '../Webpack/Webpack';
+import { alert, showConfirmationModal, showNotice } from '../BdApi/index'
 
 const UIConst =
 {
@@ -10,7 +11,9 @@ const UIConst =
     const { showToast } = WebpackModules.getModule(x => x.showToast);
     showToast(createToast(message || "Success !", [0, 1, 2, 3, 4, 5].includes(toastType) ? toastType : 1)); // showToast has more then 3 toast types?
     // uhmm.. aschtually waht is 4.
-  }
+  },
+  showConfirmationModal,
+  showNotice,
 }
 
 export default UIConst;

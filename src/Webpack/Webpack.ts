@@ -26,7 +26,7 @@ const Webpack =
           propertyExpression(x?.exports) || propertyExpression(x)
         );
       } else {
-        return (propertyExpression(x?.exports?.default) || propertyExpression(x));
+        return (propertyExpression(x?.exports?.default) || propertyExpression(x?.exports));
       }
     };
     return webpack.getModule(expression, options);

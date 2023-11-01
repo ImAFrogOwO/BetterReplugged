@@ -27,7 +27,7 @@ const BDCompat =
   Net: {},
   showConfirmationModal,
   showNotice,
-  alert, // This should be a function.
+  alert, // This should be a function. It is Bomba, it is.
   findModuleByProps: WebpackModules.findModuleByProps,
   React: WebpackModules.getModule(x => x?.createElement) ?? React, // "budddi, fac you" - tharki
   ReactDOM: WebpackModules.findModuleByProps("render", "findDOMNode") ?? ReactDOM

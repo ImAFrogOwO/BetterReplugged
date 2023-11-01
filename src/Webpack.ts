@@ -19,14 +19,14 @@ const Webpack =
   getModule(propertyExpression: (module: any) => any, options: any = {}) {
     const expression = (x: any) => {
       if (options.searchExports) {
-        console.log("{searchExports:true}")
         return (
           propertyExpression(x?.exports?.ZP) ||
           propertyExpression(x?.exports?.Z) ||
-          propertyExpression(x?.exports?.default)
+          propertyExpression(x?.exports?.default) ||
+          propertyExpression(x?.exports) || propertyExpression(x)
         );
       } else {
-        return propertyExpression(x?.exports?.default);
+        return (propertyExpression(x?.exports?.default) || propertyExpression(x));
       }
     };
     return webpack.getModule(expression, options);

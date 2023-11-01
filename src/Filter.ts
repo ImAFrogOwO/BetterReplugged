@@ -1,24 +1,24 @@
-/* eslint-disable @typescript-eslint/no-unnecessary-condition */
-import { webpack } from "replugged";
-import WebpackModules from './Webpack';
+import { filters } from "replugged/dist/renderer/modules/webpack"
 
+/* eslint-disable @typescript-eslint/no-unnecessary-condition */
 const Filters =
 {
   byStoreName(filters) {
-    return webpack.getByStoreName(filters)
+    return (c) => c?.getName?.() == filters
   },
   byProps(filters) {
-    return webpack.getByProps(filters)
+    return filters.byProps(filters)
   },
   byKeys(filters) {
-    return webpack.getByProps(filters)
+    return filters.byProps(filters)
   },
   byValue(filters) {
-    return webpack.getByValue(filters)
+    return filters.byValue(filters)
   },
-  byStrings: (filters) => (module) => {
-    const moduleString = module?.toString?.() || '';
-    return filters.every(s => moduleString.includes(s));
+  byStrings: (...filter) => {
+    return (module) => {
+      return filter.every(s => filters.bySource(s)(module)); // THIS DOESNT WORK YET. NONE DO
+    }
   }
 }
 

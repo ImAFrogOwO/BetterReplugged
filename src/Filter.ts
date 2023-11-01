@@ -1,4 +1,4 @@
-import { filters } from "replugged/dist/renderer/modules/webpack"
+import { filters } from "replugged/webpack"
 
 /* eslint-disable @typescript-eslint/no-unnecessary-condition */
 const Filters =
